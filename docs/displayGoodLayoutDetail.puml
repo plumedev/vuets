@@ -1,0 +1,18 @@
+@startuml
+participant LayoutDetail.vue
+participant selectedLayout
+participant layoutDetailStore as "layoutDetailStore()"
+participant layoutSettingsStore as "layoutSettingsStore()"
+participant setEditingLayout
+
+LayoutDetail.vue-> selectedLayout: Écoute selectedLayout
+selectedLayout -> layoutDetailStore: Récupère l'ID du layout depuis layoutDetailStore().layoutId
+layoutDetailStore --> selectedLayout: Renvoie l'ID du layout
+selectedLayout -> layoutSettingsStore: Vérifie si l'ID du layout existe dans la liste des layouts
+layoutSettingsStore --> selectedLayout: Retourne le layout s'il existe ou null
+alt si layout
+setEditingLayout -> setSelectedLayoutId: set l'id du layout
+end
+
+selectedLayout --> LayoutDetail.vue: affiche le layout
+@enduml

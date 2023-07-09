@@ -1,0 +1,10 @@
+@startuml
+participant LayoutsList
+participant layoutsListStore
+
+LayoutsList->>layoutsListStore: Accès à la liste des layouts (listLayouts)
+layoutsListStore->>LayoutsList: Retourne la liste des layouts
+alt Listes non vides
+    LayoutsList->>LayoutsList: Appel scrollToSelectedLayout()
+end
+@enduml

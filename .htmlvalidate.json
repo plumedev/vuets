@@ -1,0 +1,31 @@
+{
+  "plugins": ["html-validate-vue"],
+  "extends": ["html-validate:recommended", "html-validate-vue:recommended"],
+  "elements": [
+    "html5",
+    {
+      "img": {
+        "attributes": {
+          "src": {
+            "boolean": false,
+            "required": false
+          },
+          "alt": {
+            "boolean": false,
+            "required": false
+          }
+        }
+      }
+    }
+  ],
+  "transform": {
+    "^.*\\.vue$": "html-validate-vue"
+  },
+  "rules": {
+    "element-name": "off",
+    "element-case": "off",
+    "text-content": "off",
+    "element-permitted-content": "off",
+    "element-permitted-parent": "off"
+  }
+}

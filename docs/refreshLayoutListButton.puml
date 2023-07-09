@@ -1,0 +1,16 @@
+@startuml
+participant LayoutsList
+participant layoutsListStore
+participant layoutSettingsStore
+participant LayoutsService
+participant API
+
+LayoutsList->LayoutsList: didClickOnRefreshLayoutsListButton
+LayoutsList->LayoutsService: getLayouts()
+
+activate LayoutsService
+LayoutsService->>API: Requête pour récupérer les layouts
+API->>LayoutsService: Retourne les layouts
+LayoutsService->>layoutSettingsStore: Set les layouts dans le store
+deactivate LayoutsService
+@enduml
