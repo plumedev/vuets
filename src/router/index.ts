@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-
 import Home from '@/views/Home/Home';
 
 const routes = [
@@ -16,7 +15,7 @@ const routes = [
   // },
   {
     path: '/*',
-    redirect: { name: 'home' },
+    redirect: { name: 'Home' },
   },
 ];
 
