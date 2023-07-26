@@ -15,8 +15,12 @@
     "baseUrl": ".",
     "types": ["webpack-env", "node"],
     "paths": {
-      "@/*": ["src/*"]
-    },
+      "@/*": ["src/*"],
+      "*": [
+          "node_modules/*",
+          "src/types/*"
+      ]
+  },
     "lib": ["esnext", "es5", "es2015", "dom", "dom.iterable", "scripthost"],
     "useDefineForClassFields": true
   },
