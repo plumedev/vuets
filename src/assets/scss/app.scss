@@ -2,12 +2,28 @@ $green-gradient: linear-gradient(135deg, #EBF8F5 0%, #BDF7E0 100%);
 
 $black: #000000;
 $white: #FFFFFF;
-$primary: #3B5649;
-$secondary: #389568;
+$primary: #328560;
+$secondary: #194330;
 $tertiary: #09E77C;
+$primary-80: #ebf3ef;
+$primary-50: #99c2b0;
 $grey:  #D9D9D9;
+
+$btn-border-radius: 2px;
+$btn-hover-bg-shade-amount:50%;
+
+$navbar-light-color: $white;
+$input-border-radius: 2px;
+$input-border-color: $primary;
+$input-border-width: 2px;
+$table-bg: transparent;
+$table-striped-bg: $primary-80;
+$table-hover-bg: $primary-50;
 
 body {
     min-height: 100vh;
     min-width: 100vw;
 }
+
+// Now import Bootstrap to set these changes
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";

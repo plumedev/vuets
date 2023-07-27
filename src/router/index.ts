@@ -7,6 +7,11 @@ const routes = [
     name: 'Home',
     component: Home,
   },
+  {
+    path: '/createTransaction',
+    name: 'Create transation',
+    component: Home,
+  },
   // {
   //   path: '/library',
   //   name: 'library',

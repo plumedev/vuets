@@ -1,0 +1,40 @@
+<div class="row box bg-light pt-4 pe-4 pb-4 ps-3">
+    <CustomTitle content="Ajouter une transaction" type="h2" />
+
+    <form @submit.prevent="validForm">
+        <div class="row">
+            <div class="col-3">
+                <input  type="text"
+                        class="form-control" 
+                        id="label" 
+                        placeholder="Label" 
+                        v-model="label" 
+                        :class="{ 'is-invalid': labelError }"
+                >
+                <div class="invalid-feedback" v-if="labelError">{{ labelError }}</div>
+            </div>
+            <div class="col-3">
+                <input  type="date"
+                        class="form-control" 
+                        id="date" 
+                        v-model="date" 
+                        :class="{ 'is-invalid': dateError }"
+                >
+                <div class="invalid-feedback" v-if="dateError">{{ dateError }}</div>
+            </div>
+            <div class="col-3">
+                <input  type="number" 
+                        class="form-control"
+                        id="amount" 
+                        placeholder="Ex: 2.4" 
+                        v-model="amount" 
+                        :class="{ 'is-invalid': amountError }"
+                >
+                <div class="invalid-feedback" v-if="amountError">{{ amountError }}</div>
+            </div>
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary mb-3">Créer</button>
+            </div>
+        </div>
+    </form>
+</div>

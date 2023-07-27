@@ -1,7 +1,23 @@
 import { Options, Vue } from 'vue-class-component';
 
 /** Components */
-import Title from '@/components/SharedComponents/Title';
+import CustomTitle from '@/components/SharedComponents/CustomTitle';
+import Header from '@/components/Header';
+import TransactionForm from '@/components/TransactionForm';
+import CustomTable from '@/components/SharedComponents/CustomTable';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faSquareMinus as fasSquareMinus } from '@fortawesome/free-solid-svg-icons';
+import { faSquareMinus as farSquareMinus } from '@fortawesome/free-regular-svg-icons';
+import { TableTransactionLabels } from '@/models/tableTransactionLabels';
+
+library.add(fasSquareMinus, farSquareMinus);
+
+interface TableRows {
+  label: string;
+  date: string;
+  amount: number;
+}
 
 /** Store */
 
@@ -9,7 +25,17 @@ import Title from '@/components/SharedComponents/Title';
   name: 'Home',
   template: require('./Home.html'),
   components: {
-    Title
+    CustomTitle,
+    Header,
+    TransactionForm,
+    CustomTable,
+    FontAwesomeIcon
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  public getTableTitles = () => Object.values(TableTransactionLabels);
+
+  public getTableRows(): TableRows[] {
+      return this.$store.state.transactions as TableRows[];
+  }
+}

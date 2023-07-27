@@ -1,0 +1,24 @@
+<div class="row box bg-light pt-4 pe-4 pb-4 ps-3">
+    <table class="table table-striped table-hover table-custom">
+        <thead>
+            <tr>
+                <th scope="col" v-for="(title, index) in getTableTitles()" :key="index">
+                    {{ title }}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(tableRow, index) in getTableRows()" :key="index">
+                <td scope="row">{{ tableRow.label }}</td>
+                <td>{{ tableRow.date }}</td>
+                <td>{{ tableRow.amount }}</td>
+                <td>
+                    <span class="icon-toggle">
+                        <font-awesome-icon class="initial" :icon="['far', 'square-minus']" />
+                        <font-awesome-icon class="hovered" :icon="['fas', 'square-minus']" />
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
