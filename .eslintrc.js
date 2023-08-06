@@ -63,12 +63,8 @@ module.exports = {
     '@typescript-eslint/no-misused-new': 'error',
     '@typescript-eslint/no-namespace': 'error',
     '@typescript-eslint/no-parameter-properties': 'off',
-    '@typescript-eslint/no-shadow': [
-      'error',
-      {
-        hoist: 'all',
-      },
-    ],
+    '@typescript-eslint/no-shadow': 'off',
+    'no-shadow': 'off',
     '@typescript-eslint/no-unused-expressions': 'error',
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-var-requires': 'error',

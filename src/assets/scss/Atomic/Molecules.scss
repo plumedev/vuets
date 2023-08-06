@@ -1,0 +1,14 @@
+/* Header menu */
+
+#menu {
+    #menu-container {
+        .navbar-nav {
+            a {
+                color: $white;
+                &:hover {
+                    color: $secondary;
+                }
+            }
+        }
+    }
+}

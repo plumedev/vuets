@@ -1,30 +1,40 @@
 import { createStore } from 'vuex';
+import { TransactionType } from '@/models/transactionTypes';
+
+interface Transaction {
+  label: string;
+  date: string;
+  amount: number;
+  type: TransactionType;
+}
+
+const state = {
+  transactions: [] as Transaction[],
+};
 
 const store = createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {
-    // keySettingsStore: KeySettingsStore,
-    // layoutSettingsStore: LayoutSettingsStore,
-    // layoutDetailStore: LayoutDetailStore,
-    // layoutsListStore: LayoutsListStore,
-    // settingsStore: SettingsStore,
-    // layoutLibraryStore: LayoutLibraryStore,
+  state,
+  getters: {
+    transactions: (state) => state.transactions
   },
+  mutations: {
+    // Define mutation to add a new transaction
+    addTransaction: (state, transaction: Transaction) => {
+      state.transactions.push(transaction);
+    },
+
+    // Define mutation to sync transactions with localStorage
+    syncTransactions: (state, transactions: Transaction[]) => {
+      state.transactions = transactions;
+    },
+  },
+  actions: {
+    // Define action to add a new transaction
+    addTransaction: ({ commit }, transaction: Transaction) => {
+      commit('addTransaction', transaction);
+    },
+  },
+  modules: {},
 });
 
 export default store;
-
-// export const keySettingsStore = (): KeySettingsStore =>
-//   getModule(KeySettingsStore, store);
-// export const layoutSettingsStore = (): LayoutSettingsStore =>
-//   getModule(LayoutSettingsStore, store);
-// export const layoutDetailStore = (): LayoutDetailStore =>
-//   getModule(LayoutDetailStore, store);
-// export const layoutsListStore = (): LayoutsListStore =>
-//   getModule(LayoutsListStore, store);
-// export const settingsStore = (): SettingsStore =>
-//   getModule(SettingsStore, store);
-// export const layoutLibraryStore = (): LayoutLibraryStore =>
-//   getModule(LayoutLibraryStore, store);

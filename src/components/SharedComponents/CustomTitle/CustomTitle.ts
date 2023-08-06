@@ -25,6 +25,6 @@ import { Options, Vue } from 'vue-class-component';
     <component :is="type">{{ content }}</component>
   `,
 })
-// On définit une classe 'Title' qui hérite de 'Vue' et qui est exportée par défaut.
+// On définit une classe 'CustomTitle' qui hérite de 'Vue' et qui est exportée par défaut.
 // Cette classe représente le composant Vue.
-export default class Title extends Vue {}
+export default class CustomTitle extends Vue {}
