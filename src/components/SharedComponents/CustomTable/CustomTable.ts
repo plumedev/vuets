@@ -1,20 +1,18 @@
 // eslint-disable-next-line max-classes-per-file
 import { Options, Vue } from 'vue-class-component';
+import { mapGetters } from 'vuex';
+
+// Extra
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faSquareMinus as fasSquareMinus } from '@fortawesome/free-solid-svg-icons';
 import { faSquareMinus as farSquareMinus } from '@fortawesome/free-regular-svg-icons';
-import { mapGetters } from 'vuex';
 
+/* Models */
+import { TableRows } from '@/models/tableTypes';
 import { TableTransactionLabels } from '@/models/tableTransactionLabels';
 
 library.add(fasSquareMinus, farSquareMinus);
-
-interface TableRows {
-    label: string;
-    date: string;
-    amount: number;
-}
 
 class Props {
     public tableTitles!: string;
@@ -47,6 +45,7 @@ export default class CustomTable extends Vue.with(Props) {
     public getTableTitles = () => Object.values(TableTransactionLabels);
 
     public getTableRows(): TableRows[] {
+        console.log('getTableRows');
         return (this.$store.state as any)[this.tableRows] as TableRows[];
     }
 }

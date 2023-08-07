@@ -36,6 +36,8 @@ export default class Home extends Vue {
   public getTableTitles = () => Object.values(TableTransactionLabels);
 
   public getTableRows(): TableRows[] {
-      return this.$store.state.transactions as TableRows[];
+      const tableRows = this.$store.state.transactions as TableRows[];
+      console.log(tableRows);
+      return tableRows;
   }
 }

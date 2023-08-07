@@ -3,6 +3,10 @@ import { Options, Vue } from 'vue-class-component';
 import CustomTitle from '../SharedComponents/CustomTitle';
 import { TransactionType } from '@/models/transactionTypes';
 import LocalStorageService from '@/services/LocalStorageService';
+import dayjs from 'dayjs';
+import 'dayjs/locale/fr';
+
+dayjs.locale('fr');
 
 // Le décorateur 'Options' est utilisé pour définir les options du composant.
 @Options({
@@ -12,7 +16,8 @@ import LocalStorageService from '@/services/LocalStorageService';
   },
   components: {
     CustomTitle,
-    LocalStorageService
+    LocalStorageService,
+    dayjs
   }
 })
 // On définit une classe 'CustomTitle' qui hérite de 'Vue' et qui est exportée par défaut.
@@ -20,7 +25,7 @@ import LocalStorageService from '@/services/LocalStorageService';
 export default class TransactionForm extends Vue {
   // Define your data properties
   public label = '';
-  public date = '';
+  public date = dayjs().format('YYYY-MM-DD');
   public amount = '';
 
   public labelError = '';
