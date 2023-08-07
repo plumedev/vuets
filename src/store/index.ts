@@ -1,12 +1,7 @@
 import { createStore } from 'vuex';
-import { TransactionType } from '@/models/transactionTypes';
 
-interface Transaction {
-  label: string;
-  date: string;
-  amount: number;
-  type: TransactionType;
-}
+/* Models */
+import { Transaction } from '@/models/transaction';
 
 const state = {
   transactions: [] as Transaction[],
