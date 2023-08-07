@@ -3,6 +3,7 @@ import { Options, Vue } from 'vue-class-component';
 import CustomTitle from '../SharedComponents/CustomTitle';
 import { TransactionType } from '@/models/transactionTypes';
 import LocalStorageService from '@/services/LocalStorageService';
+import UuidService from '@/services/UuidService';
 import dayjs from 'dayjs';
 import 'dayjs/locale/fr';
 
@@ -27,6 +28,7 @@ export default class TransactionForm extends Vue {
   public label = '';
   public date = dayjs().format('YYYY-MM-DD');
   public amount = '';
+  public uuid = UuidService.generateUniqueId();
 
   public labelError = '';
   public dateError = '';
@@ -40,6 +42,7 @@ export default class TransactionForm extends Vue {
         date: this.date,
         amount: parseFloat(this.amount),
         type: TransactionType.Income, // By default, the type is set to Income
+        uuid: this.uuid,
       };
       await this.$store.dispatch('addTransaction', transaction ).then(() => {
         // Clear the form
@@ -51,7 +54,8 @@ export default class TransactionForm extends Vue {
 
           label: transaction.label,
           date: transaction.date,
-          amount: transaction.amount
+          amount: transaction.amount,
+          uuid: transaction.uuid
         });
       }).catch((error) => {
         console.error('Error while adding transaction', error);
