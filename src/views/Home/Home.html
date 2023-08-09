@@ -7,6 +7,6 @@
 <div class="container pt-4 pb-4">
     <CustomTitle content="Dépense du mois" type="h2" />
 
-    <CustomTable tableRows="transactions" />
+    <CustomTable :tableTitles="getTableTitles()" :tableRows="getTableRows()" />
 </div>
 
