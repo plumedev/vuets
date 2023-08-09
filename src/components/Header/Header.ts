@@ -1,5 +1,7 @@
 // eslint-disable-next-line max-classes-per-file
 import { Options, Vue } from 'vue-class-component';
+
+/* Icons */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
