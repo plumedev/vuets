@@ -3,8 +3,14 @@ import { createStore } from 'vuex';
 /* Models */
 import { Transaction } from '@/models/transaction';
 
+// Tentative de récupération des transactions sauvegardées dans le localStorage
+const savedTransactions = localStorage.getItem('transactions');
+// Si les transactions sont présentes dans le localStorage, on les parse, sinon on initialise un tableau vide
+const initialTransactions = savedTransactions ? JSON.parse(savedTransactions) : [];
+
+// Initialisation de l'état (state) avec les transactions
 const state = {
-  transactions: [] as Transaction[],
+  transactions: initialTransactions as Transaction[],
 };
 
 const store = createStore({
@@ -13,23 +19,34 @@ const store = createStore({
     transactions: (state) => state.transactions
   },
   mutations: {
-    // Define mutation to add a new transaction
     addTransaction: (state, transaction: Transaction) => {
       state.transactions.push(transaction);
     },
-
-    // Define mutation to sync transactions with localStorage
     syncTransactions: (state, transactions: Transaction[]) => {
       state.transactions = transactions;
     },
+    deleteTransaction: (state, uuid: string) => {
+      state.transactions = state.transactions.filter((transaction) => transaction.uuid !== uuid);
+    },
   },
   actions: {
-    // Define action to add a new transaction
     addTransaction: ({ commit }, transaction: Transaction) => {
       commit('addTransaction', transaction);
     },
+    deleteTransaction: ({ commit }, uuid: string) => {
+      commit('deleteTransaction', uuid);
+    },
   },
   modules: {},
+});
+
+// S'abonner aux mutations du store
+store.subscribe((mutation, state) => {
+  if (mutation.type === 'addTransaction'      ||
+      mutation.type === 'deleteTransaction'   ||
+      mutation.type === 'syncTransactions') {
+    localStorage.setItem('transactions', JSON.stringify(state.transactions));
+  }
 });
 
 export default store;
