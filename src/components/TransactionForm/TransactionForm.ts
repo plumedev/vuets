@@ -28,7 +28,7 @@ export default class TransactionForm extends Vue {
   public label = '';
   public date = dayjs().format('YYYY-MM-DD');
   public amount = '';
-  public uuid = UuidService.generateUniqueId();
+  public uuid = '';
 
   public labelError = '';
   public dateError = '';
@@ -42,21 +42,13 @@ export default class TransactionForm extends Vue {
         date: this.date,
         amount: parseFloat(this.amount),
         type: TransactionType.Income, // By default, the type is set to Income
-        uuid: this.uuid,
+        uuid: UuidService.generateUniqueId(),
       };
       await this.$store.dispatch('addTransaction', transaction ).then(() => {
         // Clear the form
         this.label = '';
         this.date = '';
         this.amount = '';
-
-        LocalStorageService.save('transactions', {
-
-          label: transaction.label,
-          date: transaction.date,
-          amount: transaction.amount,
-          uuid: transaction.uuid
-        });
       }).catch((error) => {
         console.error('Error while adding transaction', error);
       });
