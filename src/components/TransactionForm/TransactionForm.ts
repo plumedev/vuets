@@ -33,6 +33,7 @@ export default class TransactionForm extends Vue {
   public labelError = '';
   public dateError = '';
   public amountError = '';
+  public isSwitchedOn = false;
 
   // Method to handle form submission
   public async submitForm(): Promise<void> {
@@ -41,7 +42,7 @@ export default class TransactionForm extends Vue {
         label: this.label,
         date: this.date,
         amount: parseFloat(this.amount),
-        type: TransactionType.Income, // By default, the type is set to Income
+        type: this.isSwitchedOn ? TransactionType.Income : TransactionType.Expense,
         uuid: UuidService.generateUniqueId(),
       };
       await this.$store.dispatch('addTransaction', transaction ).then(() => {

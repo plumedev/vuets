@@ -3,7 +3,7 @@
     {{ time }}
     <form @submit.prevent="validForm">
         <div class="row">
-            <div class="col-md-3 col-12 mb-3">
+            <div class="col-md-4 col-12 mb-3">
                 <input  type="text"
                         class="form-control" 
                         id="label" 
@@ -13,7 +13,7 @@
                 >
                 <div class="invalid-feedback" v-if="labelError">{{ labelError }}</div>
             </div>
-            <div class="col-md-3 col-12 mb-3">
+            <div class="col-md-4 col-12 mb-3">
                 <input  type="date"
                         class="form-control" 
                         id="date" 
@@ -22,7 +22,7 @@
                 >
                 <div class="invalid-feedback" v-if="dateError">{{ dateError }}</div>
             </div>
-            <div class="col-md-3 col-12 mb-3">
+            <div class="col-md-4 col-12 mb-3">
                 <input  type="number" 
                         class="form-control"
                         id="amount" 
@@ -32,7 +32,32 @@
                 >
                 <div class="invalid-feedback" v-if="amountError">{{ amountError }}</div>
             </div>
-            <div class="col-md-3 col-12 mb-3">
+            <div class="col-md-6 col-12 mb-3">
+                <div class="form-switch-container d-flex">
+                    <label  class="form-check-label me-2"
+                            for="flexSwitchCheckDefault"
+                            :class="{ 'fw-bold text-danger': !isSwitchedOn }"
+                            >
+                            Expenses
+                    </label>
+                    <div class="form-check form-switch">
+                        <input  class="form-check-input" 
+                                type="checkbox"
+                                role="switch"
+                                id="flexSwitchCheckDefault"
+                                v-model="isSwitchedOn"
+                                :class="{ 'bg-danger': !isSwitchedOn }"
+                        >
+                    </div>
+                    <label  class="form-check-label me-2"
+                            for="flexSwitchCheckDefault"
+                            :class="{ 'fw-bold text-primary': isSwitchedOn }"
+                            >
+                            Income
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6 col-12 mb-3">
                 <button type="submit" class="btn btn-primary mb-3 w-100">Créer</button>
             </div>
         </div>
