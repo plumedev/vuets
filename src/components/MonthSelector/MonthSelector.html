@@ -1,0 +1,12 @@
+<div id="monthSelector" class="d-flex">
+    <button type="button" class="btn" @click="backwardDate()">
+        <font-awesome-icon :icon="['fas', 'arrow-left']" />
+    </button>
+    <CustomTitle class="d-flex justify-content-center align-items-center text-capitalize m-0"
+                :content="displayedActiveMonth" 
+                type="h3"
+    />
+    <button type="button" class="btn" @click="forwardDate()">
+        <font-awesome-icon :icon="['fas', 'arrow-right']" />
+    </button>
+</div>

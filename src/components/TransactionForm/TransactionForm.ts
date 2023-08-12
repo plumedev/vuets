@@ -21,7 +21,7 @@ dayjs.locale('fr');
     dayjs
   }
 })
-// On définit une classe 'CustomTitle' qui hérite de 'Vue' et qui est exportée par défaut.
+// On définit une classe 'TransactionForm' qui hérite de 'Vue' et qui est exportée par défaut.
 // Cette classe représente le composant Vue.
 export default class TransactionForm extends Vue {
   // Define your data properties
