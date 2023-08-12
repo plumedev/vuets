@@ -5,6 +5,7 @@ import CustomTitle from '@/components/SharedComponents/CustomTitle';
 import Header from '@/components/Header';
 import TransactionForm from '@/components/TransactionForm';
 import { CustomTable } from '@/components/SharedComponents/CustomTable';
+import MonthSelector from '@/components/MonthSelector';
 
 /* Models */
 import { TableTransactionLabels } from '@/models/tableTransactionLabels';
@@ -17,7 +18,8 @@ import { TableRows } from '@/models/tableTypes';
     CustomTitle,
     Header,
     TransactionForm,
-    CustomTable
+    CustomTable,
+    MonthSelector
   },
 })
 

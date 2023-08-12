@@ -1,12 +1,15 @@
 <Header />
 
+<div class="container pt-4 d-flex justify-content-center">
+    <MonthSelector />
+</div>
+
 <div class="container pt-4 pb-4">
     <TransactionForm />
 </div>
 
 <div class="container pt-4 pb-4">
     <CustomTitle content="Dépense du mois" type="h2" />
-
     <CustomTable :tableTitles="getTableTitles()" :tableRows="getTableRows()" />
 </div>
 
